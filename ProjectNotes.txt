@@ -1,0 +1,145 @@
+Ref: 
+1) https://medium.com/ruby-on-rails-web-application-development/how-to-install-rubyonrails-on-windows-7-8-10-complete-tutorial-2017-fc95720ee059
+2) https://www.youtube.com/watch?v=QojnRc7SS9o
+
+# ruby  -v
+# rails -v
+
+1. create api
+#rails new myarticles --api
+
+
+2. to open the full project at Atom
+Go to the folder 'myarticles'
+#atom .
+
+
+Installing ruby and rails
+-------------------------
+1. Need to install Ruby
+2. Need to install MSYS2
+3.     After the installer completes, you need to set up pacman
+    Load a new MSYS2 console and type the following:
+	$pacman -Sy pacman
+
+4. Open up CMD
+Type 
+	$ridk install
+
+Press 3 and Enter.
+	
+5. Installing C-dependent Gems (Nokogiri / SQLite3 etc)
+	
+
+    To install sqlite3 gem:
+
+      ridk exec pacman -S mingw-w64-x86_64-sqlite3
+      gem install sqlite3 --platform ruby
+
+    To install nokogiri gem:
+
+      ridk exec pacman -S mingw-w64-x86_64-libxslt
+      gem install nokogiri --platform ruby -- --use-system-libraries
+
+6. Yarn & NodeJS for windows
+
+7. Update rubygemes
+$gem update --system
+
+Check version
+$gem  -v
+
+8. install rails
+$gem install rails
+
+
+9. puma is a web server. Need to install following  
+$gem install puma
+$gem install bootsnap
+$gem install byebug 
+$gem install tzinfo-data
+
+another way to install all above gems,
+go to project folder and then run following command to install all packages
+	$bundle install
+
+10. after creating project
+	$rails new myarticles --api
+ 	$cd myarticles
+
+	open Gemfile and use following instead of gem 'puma', '~> 4.1' 
+	gem 'puma'
+
+11. To start server 
+$rails server
+
+
+
+mysql2 installation in windows 10
+----------------------------------
+if following command doesn't work, the do the following
+	$gem install mysql2 
+
+
+Ref: https://stackoverflow.com/questions/19014117/ruby-mysql2-gem-installation-on-windows-7
+1) Download the MySql C Connector from: http://dev.mysql.com/downloads/connector/c/
+	NOTE Don't download the installer, download the ARCHIVE for your OS
+	e.g.. https://downloads.mysql.com/archives/c-c/
+	(mysql-connector-c-6.1.11-winx64.zip)
+	
+2) Extract the file to C:\mysql-connector
+
+3) Then ran:	
+	$gem install mysql2 --platform=ruby -- '--with-mysql-lib="C:\mysql-connector\lib" --with-mysql-include="C:\mysql-connector\include" --with-mysql-dir="C:\mysql-connector"'
+	
+
+In my machine:
+	$gem install mysql2 --platform=ruby -- '--with-mysql-lib="D:\installed-software\mysql-connector-c-6.1.11-winx64\lib" --with-mysql-include="D:\installed-software\mysql-connector-c-6.1.11-winx64\include" --with-mysql-dir="D:\installed-software\mysql-connector-c-6.1.11-winx64"'
+
+
+mysql2 configuration
+---------------------
+changes for 'mysql2' are in for 'myarticles' 
+config->database.yml
+
+default: &default
+  adapter: mysql2
+  username: root
+  password:
+
+development:
+  <<: *default
+  database: myarticles
+  
+test:
+  <<: *default
+  database: myarticles
+
+production:
+  <<: *default
+  database: myarticles
+  
+Generate model 'Article'
+-----------------------
+$rails g model Article title:string body:text
+
+Migrate model to DB
+------------------
+$rails db:migrate
+
+
+
+Install 'faker' gem
+-------------------
+$gem install faker 
+
+In 'Gemfile', 
+	group :development do
+	  gem 'faker'
+	end
+
+
+update seed to
+$rails db:seed  
+$rails routes 
+
