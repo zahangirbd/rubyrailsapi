@@ -1,24 +1,10 @@
-# README
+# myarticles project - a sample API development on Ruby using Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project demonstrates myarticles API
+	- GET articles
+	- GET articles/:id
+	- POST articles
+	- PUT articles/:id
+	- DELETE articles/:id
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+It uses MySQL 'myarticles' db
