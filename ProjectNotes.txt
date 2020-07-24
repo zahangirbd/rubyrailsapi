@@ -143,3 +143,11 @@ update seed to
 $rails db:seed  
 $rails routes 
 
+
+
+To test all features using rake command
+---------------------------------------
+put all unit testing at myartciles/test/*
+go to myartciles folder
+$ cd 'myartciles'
+$ rake 
