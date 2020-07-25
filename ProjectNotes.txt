@@ -141,7 +141,10 @@ In 'Gemfile',
 
 update seed to
 $rails db:seed  
+
+To check what routes are available now
 $rails routes 
+
 
 
 
